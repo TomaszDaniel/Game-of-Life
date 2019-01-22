@@ -1,25 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 
 <head>
-    <meta charset="utf-8">
-    <title>let's play</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Game of Life</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
-
-    <input class="width" placeholder="Podaj szerokość tabeli">
-    <input class="height" placeholder="Podaj wysokość tabeli">
-    <button>Utwórz grę</button>
-
     <div class="flex-container">
+        <div id="game-set">
+            <button id="play">Start</button>
+            <button id="stop">Stop</button>
+        </div>
         <section id="board">
-        </section>
-        <section id="game-set">
-            <button id="play">graj</button>
-            <button id="pause">pauza</button>
-            <button id="stop">stop</button>
         </section>
     </div>
     <script src="js/main.js"></script>

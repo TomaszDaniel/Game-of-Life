@@ -7,7 +7,7 @@ class GameOfLife {
     createBoard() {
         const board = document.querySelector('#board')
         board.style.width = `${this.width * 10}px`;
-        board.style.height = `${this.height * 10}px`
+        board.style.height = `${this.height * 10}px`;
         const boardSize = this.width * this.height
         for (let i = 0; i < boardSize; i++) {
             const newDiv = document.createElement('div');
@@ -92,21 +92,29 @@ class GameOfLife {
         game.createBoard()
         game.firstGlider()
         let interval
-        document.querySelector('#play').addEventListener('click', () => {
-            interval = setInterval(() => {
-                game.printNextGeneration()
-            }, 200)
-        })
-        document.querySelector('#pause').addEventListener('click', () => {
-            clearInterval(interval)
+        const startButton = document.querySelector('#play')
+        startButton.addEventListener('click', (e) => {
+            if (startButton.className !== 'active') {
+                interval = setInterval(() => {
+                    game.printNextGeneration()
+                }, 200)
+                e.target.classList.add('active')
+                e.target.textContent = 'Pauza'
+            } else {
+                clearInterval(interval)
+                e.target.classList.remove('active')
+                e.target.textContent = 'Start'
+            }
         })
         document.querySelector('#stop').addEventListener('click', () => {
             clearInterval(interval)
             game.removeBoard();
+            startButton.classList.remove('active')
+            startButton.textContent = 'Start'
         })
 
     }
 }
 
-const game = new GameOfLife(10, 10);
+const game = new GameOfLife(40, 20);
 game.startGame();

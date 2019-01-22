@@ -3,8 +3,6 @@
 }
 
 body {
-    margin: 0;
-    padding: 0;
     background-color: #cccccc;
 }
 
@@ -20,13 +18,12 @@ body {
     background-color: #000000;
 }
 
-#board {
-    margin: 50px auto 0;
-    min-height: 100px;
-    min-width: 100px
+#board,
+#game-set {
+    margin: 10px auto;
+    text-align: center;
 }
 
-#game-menu {
-    margin: 50px auto;
-    width: auto;
+button {
+    width: 10%;
 }
