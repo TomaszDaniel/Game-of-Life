@@ -66,8 +66,8 @@ class GameOfLife {
     }
     computeNextGeneration() {
         const nextState = []
-        for (let i = 0; i < this.width; i++) {
-            for (let j = 0; j < this.height; j++) {
+        for (let j = 0; j < this.height; j++) {
+            for (let i = 0; i < this.width; i++) {
                 nextState.push(this.computeCellNextState(i, j));
             }
         }
