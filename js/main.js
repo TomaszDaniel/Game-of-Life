@@ -11,6 +11,12 @@ class GameOfLife {
         const boardSize = this.width * this.height
         for (let i = 0; i < boardSize; i++) {
             const newDiv = document.createElement('div');
+            if (i >= boardSize - 2 * this.width || i < 2 * this.width) {
+                newDiv.style.visibility = "hidden"
+            }
+            if (i % this.width === 0 || (i + 1) % this.width === 0 || (i + 2) % this.width === 0 || (i - 1) % this.width === 0) {
+                newDiv.style.visibility = "hidden"
+            }
             board.appendChild(newDiv);
         }
         this.cells = [...document.querySelectorAll('#board div')]
@@ -32,11 +38,11 @@ class GameOfLife {
         }
     }
     firstGlider() {
-        this.setCellState(0, 2, 'live')
-        this.setCellState(1, 0, 'live')
-        this.setCellState(1, 2, 'live')
-        this.setCellState(2, 1, 'live')
-        this.setCellState(2, 2, 'live')
+        this.setCellState(2, 3, 'live')
+        this.setCellState(4, 2, 'live')
+        this.setCellState(3, 4, 'live')
+        this.setCellState(4, 3, 'live')
+        this.setCellState(4, 4, 'live')
     }
     computeCellNextState(x, y) {
         let aliveCells = 0;
@@ -97,7 +103,7 @@ class GameOfLife {
             if (startButton.className !== 'active') {
                 interval = setInterval(() => {
                     game.printNextGeneration()
-                }, 200)
+                }, 10)
                 e.target.classList.add('active')
                 e.target.textContent = 'Pauza'
             } else {
@@ -113,8 +119,12 @@ class GameOfLife {
             startButton.textContent = 'Start'
         })
 
+        document.querySelector('#glider').addEventListener('click', () => {
+            this.firstGlider()
+        })
+
     }
 }
 
-const game = new GameOfLife(40, 20);
+const game = new GameOfLife(50, 26);
 game.startGame();
