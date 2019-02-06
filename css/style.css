@@ -6,24 +6,26 @@ body {
     background-color: #cccccc;
 }
 
-#board div {
-    width: 10px;
-    height: 10px;
+.board div {
+    width: 20px;
+    height: 20px;
     border: 1px solid #cccccc;
     background-color: #ffffff;
     float: left;
 }
 
-#board div.live {
+.board div.live {
     background-color: #000000;
 }
 
-#board,
-#game-set {
+.board,
+.game-set {
     margin: auto;
     text-align: center;
+    margin-bottom: 30px;
 }
 
 button {
-    width: 50px;
+    width: 150px;
+    height: 50px;
 }

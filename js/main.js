@@ -5,21 +5,14 @@ class GameOfLife {
         this.cells = [];
     }
     createBoard() {
-        const board = document.querySelector('#board')
-        board.style.width = `${this.width * 10}px`;
-        board.style.height = `${this.height * 10}px`;
+        const board = document.querySelector('.board')
+        board.style.width = `${this.width * 20}px`;
         const boardSize = this.width * this.height
         for (let i = 0; i < boardSize; i++) {
             const newDiv = document.createElement('div');
-            if (i >= boardSize - 2 * this.width || i < 2 * this.width) {
-                newDiv.style.visibility = "hidden"
-            }
-            if (i % this.width === 0 || (i + 1) % this.width === 0 || (i + 2) % this.width === 0 || (i - 1) % this.width === 0) {
-                newDiv.style.visibility = "hidden"
-            }
-            board.appendChild(newDiv);
+            board.appendChild(newDiv)
         }
-        this.cells = [...document.querySelectorAll('#board div')]
+        this.cells = [...document.querySelectorAll('.board div')]
         this.cells.forEach(element => {
             element.addEventListener('click', (e) => {
                 e.target.classList.toggle('live')
@@ -37,12 +30,43 @@ class GameOfLife {
             this.findIndex(x, y).classList.remove('live')
         }
     }
-    firstGlider() {
-        this.setCellState(2, 3, 'live')
-        this.setCellState(4, 2, 'live')
-        this.setCellState(3, 4, 'live')
-        this.setCellState(4, 3, 'live')
-        this.setCellState(4, 4, 'live')
+    gliderGun() {
+        this.setCellState(0, 4, 'live')
+        this.setCellState(0, 5, 'live')
+        this.setCellState(1, 4, 'live')
+        this.setCellState(1, 5, 'live')
+        this.setCellState(10, 4, 'live')
+        this.setCellState(10, 5, 'live')
+        this.setCellState(10, 6, 'live')
+        this.setCellState(11, 3, 'live')
+        this.setCellState(11, 7, 'live')
+        this.setCellState(12, 2, 'live')
+        this.setCellState(12, 8, 'live')
+        this.setCellState(13, 2, 'live')
+        this.setCellState(13, 8, 'live')
+        this.setCellState(14, 5, 'live')
+        this.setCellState(15, 3, 'live')
+        this.setCellState(15, 7, 'live')
+        this.setCellState(16, 4, 'live')
+        this.setCellState(16, 5, 'live')
+        this.setCellState(16, 6, 'live')
+        this.setCellState(17, 5, 'live')
+        this.setCellState(20, 4, 'live')
+        this.setCellState(20, 3, 'live')
+        this.setCellState(20, 2, 'live')
+        this.setCellState(21, 2, 'live')
+        this.setCellState(21, 3, 'live')
+        this.setCellState(21, 4, 'live')
+        this.setCellState(22, 5, 'live')
+        this.setCellState(22, 1, 'live')
+        this.setCellState(24, 0, 'live')
+        this.setCellState(24, 1, 'live')
+        this.setCellState(24, 5, 'live')
+        this.setCellState(24, 6, 'live')
+        this.setCellState(34, 2, 'live')
+        this.setCellState(34, 3, 'live')
+        this.setCellState(35, 2, 'live')
+        this.setCellState(35, 3, 'live')
     }
     computeCellNextState(x, y) {
         let aliveCells = 0;
@@ -96,7 +120,7 @@ class GameOfLife {
     }
     startGame() {
         game.createBoard()
-        game.firstGlider()
+        game.gliderGun()
         let interval
         const startButton = document.querySelector('#play')
         startButton.addEventListener('click', (e) => {
@@ -112,19 +136,16 @@ class GameOfLife {
                 e.target.textContent = 'Start'
             }
         })
-        document.querySelector('#stop').addEventListener('click', () => {
+        document.querySelector('#clear').addEventListener('click', () => {
             clearInterval(interval)
             game.removeBoard();
             startButton.classList.remove('active')
             startButton.textContent = 'Start'
         })
-
         document.querySelector('#glider').addEventListener('click', () => {
-            this.firstGlider()
+            this.gliderGun()
         })
-
     }
 }
-
-const game = new GameOfLife(50, 26);
+const game = new GameOfLife(60, 30);
 game.startGame();
