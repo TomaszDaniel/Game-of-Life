@@ -119,14 +119,14 @@ class GameOfLife {
         }
     }
     startGame() {
-        game.createBoard()
-        game.gliderGun()
+        this.createBoard()
+        this.gliderGun()
         let interval
         const startButton = document.querySelector('#play')
         startButton.addEventListener('click', (e) => {
             if (startButton.className !== 'active') {
                 interval = setInterval(() => {
-                    game.printNextGeneration()
+                    this.printNextGeneration()
                 }, 10)
                 e.target.classList.add('active')
                 e.target.textContent = 'Pauza'
@@ -138,7 +138,7 @@ class GameOfLife {
         })
         document.querySelector('#clear').addEventListener('click', () => {
             clearInterval(interval)
-            game.removeBoard();
+            this.removeBoard();
             startButton.classList.remove('active')
             startButton.textContent = 'Start'
         })
