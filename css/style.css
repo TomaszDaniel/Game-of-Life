@@ -6,9 +6,13 @@ body {
     background-color: #cccccc;
 }
 
+.board{
+    width: 90vw;
+}
+
 .board div {
-    width: 20px;
-    height: 20px;
+    width: 1.5vw;
+    height: 1.5vw;
     border: 1px solid #cccccc;
     background-color: #ffffff;
     float: left;

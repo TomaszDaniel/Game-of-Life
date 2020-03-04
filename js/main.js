@@ -6,7 +6,7 @@ class GameOfLife {
     }
     createBoard() {
         const board = document.querySelector('.board')
-        board.style.width = `${this.width * 20}px`;
+        // board.style.width = `${this.width * 20}px`;
         const boardSize = this.width * this.height
         for (let i = 0; i < boardSize; i++) {
             const newDiv = document.createElement('div');
